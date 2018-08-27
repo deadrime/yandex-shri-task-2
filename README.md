@@ -1,1 +1,0 @@
-# yandex-shi-task2
