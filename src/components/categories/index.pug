@@ -1,0 +1,9 @@
+- const activeItem = items => items.find(i => i.active === true)
+
+mixin categories(items)
+  .categories__toggler
+    +tag(activeItem(items).title, true)
+      img(class="categories__toggler__icon" src= require('./assets/arrow.svg'))
+  .categories
+    each item in items
+      +tag(item.title, item.active)

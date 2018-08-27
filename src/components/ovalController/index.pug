@@ -1,0 +1,16 @@
+mixin ovalController({type='temperature', position='horizontal'})
+  - let className = 'oval_controller'
+  - className = type === 'light' ? className + ` oval_controller--light` : className + ` oval_controller--temperature`
+  - className = position === 'vertical' ? className + ` oval_controller--vertical` : className + ` oval_controller--horizontal`
+  .oval_controller__tags
+    +tag('Вручную', true)
+    +tag('Дневной свет')
+    +tag('Вечерний свет')
+  div(class= className)
+    if type === 'light'
+      .oval_controller__from_icon
+      .oval_controller__to_icon
+    else
+      .oval_controller__from_value +30
+      .oval_controller__to_value -10
+    .oval_controller__circle

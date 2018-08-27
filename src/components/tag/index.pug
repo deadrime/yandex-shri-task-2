@@ -1,0 +1,5 @@
+mixin tag(title, active=false)
+  button(class= active ? "tag tag--active" : "tag")
+    span= title
+    if block
+      block

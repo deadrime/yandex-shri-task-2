@@ -1,0 +1,24 @@
+.page_controller
+  display none
+  margin-left auto
+  &__arrow
+    cursor pointer
+    width 16px
+    border none
+    height 16px
+    background url('./assets/arrow.svg') no-repeat center
+    opacity .3
+    &--active
+      opacity 1
+    &--prev
+      margin-right 15px
+    &--next
+      transform: scale(-1, 1)
+    &:hover
+      opacity .4
+      &.page_controller__arrow--active
+        opacity 1
+
+@media (min-width: 1024px)
+  .page_controller
+    display flex

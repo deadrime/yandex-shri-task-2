@@ -1,0 +1,78 @@
+.oval_controller
+  border-radius: 35px
+  position relative
+  margin-bottom auto
+  &__tags // TODO
+    padding-top 15px
+    padding-bottom 25px
+    display flex
+    margin-bottom auto
+    margin-right: auto;
+  &--horizontal
+    width 100%
+    height 60px
+    &.oval_controller--light
+      background-image: linear-gradient(90deg, #FFE88C 0%, #FFB100 100%)
+    &.oval_controller--temperature
+      background-image: linear-gradient(90deg, #068FFF 0%, #FFD800 50%, #F76B1C 100%);
+    .oval_controller__from_value, .oval_controller__to_value
+      width auto
+      height 100%
+      display flex
+      align-items: center
+    .oval_controller__from_value
+      left 14px
+    .oval_controller__to_value
+      right: 14px
+    .oval_controller__from_icon
+      left 0
+    .oval_controller__to_icon
+      right 0
+    &__circle
+      top 0
+  &--vertical
+    height 336px
+    width 60px
+    &.oval_controller--light
+      background-image: linear-gradient(0deg, #FFE88C 0%, #FFB100 100%)
+    &.oval_controller--temperature
+      background-image: linear-gradient(0deg, #068FFF 0%, #FFD800 50%, #F76B1C 100%);
+    .oval_controller__from_value, .oval_controller__to_value
+      width 100%
+    .oval_controller__from_value
+      top 14px
+    .oval_controller__to_value
+      bottom: 14px
+    .oval_controller__from_icon
+      top 0
+    .oval_controller__to_icon
+      bottom 0
+    &__circle
+      top 50%
+  
+  &__from_value, &__to_value
+    text-align center
+    font-size 18px
+    color #FFFFFF
+    position absolute
+
+  &__from_icon, &__to_icon
+    background-repeat: no-repeat
+    background-position: center
+    background-size: cover
+    margin: 12px
+    width 36px
+    height 36px
+    position absolute
+  &__from_icon
+    background-image url('./assets/icon_sun_max.svg')
+  &__to_icon
+    background-image url('./assets/icon_sun_min.svg')
+  &__circle
+    cursor pointer
+    width 60px
+    height 60px
+    position absolute
+    left 0
+    border-radius: 50%
+    box-shadow inset 0 0 0 3px rgba(0,0,0, .3), 0 0 0 4px #fff

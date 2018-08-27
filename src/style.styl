@@ -1,0 +1,183 @@
+@require './components/burgerMenu/index.styl'
+@require './components/mainCard/index.styl'
+@require './components/categories/index.styl'
+@require './components/card/index.styl'
+@require './components/pageController/index.styl'
+@require './components/modal/index.styl'
+@require './components/button'
+@require './components/ovalController/index.styl'
+@require './components/circleController/index.styl'
+@require './components/tag/index.styl'
+
+contentPadding = 40px
+contentPaddingMobile = 20px
+
+html, body
+  min-height 100%
+  font-family Arial
+  color #333333
+  margin 0
+  padding 0
+
+.page_wrapper
+  z-index: 1
+  min-height: 100%
+  display flex
+  flex-direction column
+
+.blur
+  overflow hidden
+  .page_wrapper
+    filter blur(2px)
+    overflow hidden
+    &:before
+      content ''
+      position fixed
+      top -25%
+      left -25%
+      width 150%
+      height 150%
+      z-index: 1000
+      background rgba(51,51,51,0.50);
+  
+.page_header
+  min-height 92px
+  position relative
+  display flex
+  justify-content space-between
+  align-items center
+  border-bottom 1px solid #F0F0F0
+  padding 0 contentPaddingMobile
+  &__logo
+    background url('./assets/logo.png') no-repeat center
+    background-size 100%
+    width 110px
+    height 37px
+  &__nav
+    display none
+    position absolute
+    width 100%
+    padding 0
+    z-index 999
+    background #fff
+    margin 0
+    box-sizing border-box
+    left 0
+    top 100%
+    flex-direction column
+    box-shadow 0 2px 6px 0 rgba(197,186,186,0.5)
+    &--active
+      display flex
+    &__item
+      text-decoration none
+      font-weight bold
+      font-size 16px
+      color #333333
+      opacity 0.6
+      padding 20px
+      text-align center
+      box-shadow inset 0 1px rgba(0,0,0,.1)
+      &--active
+        opacity 1
+
+.page_content
+  display flex
+  flex-wrap wrap
+  padding 0 0 0 20px
+
+.page_section
+  display flex
+  flex-direction column
+  width 100%
+  box-sizing border-box
+  &:nth-child(1)
+    padding-right 20px
+  &__title
+    font-size 18px
+    margin 0 13px 0 0
+  &--fullsize
+    width 100%
+  &__header
+    display flex
+    align-items center
+    margin 30px 0 20px
+  
+.page_footer
+  width 100%
+  height 64px
+  padding 0 contentPaddingMobile
+  box-sizing border-box
+  display flex
+  margin-top auto
+  justify-content space-between
+  align-items center
+  &__nav
+    display flex
+    &__item
+      text-decoration none
+      font-size 12px
+      color #858585
+      letter-spacing 0.01px
+      padding-right 10px
+  &__copyright
+    font-size 12px
+    color #858585
+    letter-spacing 0.01px
+
+.cards_list
+  display grid
+  grid-template-columns repeat(12, minmax(200px, 1fr))
+  padding 2px 0 5px 0
+  overflow hidden
+  grid-gap 15px
+
+.inline_cards
+  overflow hidden
+  display grid
+  grid-template-columns repeat(12, minmax(200px, 1fr))
+  grid-gap 15px
+  padding 2px 0 5px 0
+
+@media (min-width: 1024px)
+  .page_section
+    width 50%
+    &--fullsize
+      width: 100%
+    &:nth-child(1)
+      padding-right 14px
+    &:nth-child(2)
+      padding-left: 14px
+  .cards_list
+    grid-template-columns repeat(2, minmax(200px, 1fr))
+    padding 0
+    overflow visible
+    .card:nth-child(n+7)
+      display none
+  .page_content
+    padding 0 contentPadding
+  .page_footer
+    padding 0 contentPadding
+  .page_header
+    padding 0 contentPadding
+  .page_header__nav
+    display flex
+    flex-direction row
+    position relative
+    width auto
+    margin-right auto
+    box-shadow none
+    padding-left 32px
+    &__item
+      box-shadow none
+  .burger
+    display none
+
+@media (min-width: 1366px)
+  .cards_list
+    grid-template-columns repeat(3, minmax(200px, 1fr))
+    .card:nth-child(n+7)
+      display flex
+
+@media (min-width: 1800px)
+  .cards_list
+    grid-template-columns repeat(4, minmax(200px, 1fr))  

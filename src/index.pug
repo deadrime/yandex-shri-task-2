@@ -1,0 +1,60 @@
+include components/modal/index
+include components/categories/index
+include components/card/index
+include components/mainCard/index
+include components/burgerMenu/index
+include components/pageController/index
+include components/ovalController/index
+include components/circleController/index
+include components/tag/index
+
+- const data = require('./data.json')
+
+.page_wrapper
+  header(class="page_header")
+    div(class="page_header__logo")
+    nav(class="page_header__nav")
+      each item in data.navigation
+        a(href= item.href class= item.active ? "page_header__nav__item page_header__nav__item--active" : "page_header__nav__item")= item.title
+    +burgerMenu
+
+  main(class="page_content")
+    section(class="page_section")
+      header(class="page_section__header")
+        h2(class="page_section__title") Главное
+      div(class="page_section__content")
+        +MainCard
+
+    section(class="page_section")
+      header(class="page_section__header")
+        h2(class="page_section__title") Избранные сценарии
+        +pageController('cards_list__controller')
+      div(class="cards_list")
+        each script in data.scripts
+          +card(script, 'small')
+
+    section(class="page_section page_section--fullsize")
+      header(class="page_section__header")
+        h2(class="page_section__title") Избранные устройста
+        +categories(data.mainCategories)
+        +pageController('inline_cards__controller', true)
+      div(class="inline_cards")
+        each device in data.favDevices
+          +card(device)
+
+  footer.page_footer
+    nav.page_footer__nav
+      each item in data.footerNav
+        a(href= item.href class="page_footer__nav__item")= item.title
+    span.page_footer__copyright © 2001–2017  ООО «Яндекс»
+
+
+each item in [...data.scripts, ...data.mainCardDevices, ...data.favDevices]
+  +modal(item)
+    if (item.control === 'temperature')
+      +ovalController({type:'temperature', position: 'horizontal'})
+    if (item.control === 'light') 
+      +ovalController({type:'light', position: 'horizontal'})
+    if (item.control === 'temperature_circle') 
+      +circleController
+

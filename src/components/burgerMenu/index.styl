@@ -1,0 +1,31 @@
+.burger
+  display flex
+  align-items center
+  width 16px
+  height 14px
+  cursor pointer
+  &__menu, &__menu:before, &__menu:after
+    transition: all .35s cubic-bezier(.23,1,.32,1)
+    content ''
+    width 16px
+    height 2px
+    border-radius 2px
+    background #333
+  &__menu
+    position relative
+    &:before, &:after
+      position absolute
+    &:before
+      top 5px
+    &:after
+      top -5px
+  &--active
+    .burger__menu
+      background rgba(0,0,0,0)
+      &:before
+        transform: rotate(135deg)
+        top 0
+      &:after
+        transform: rotate(-135deg)
+        top 0
+      

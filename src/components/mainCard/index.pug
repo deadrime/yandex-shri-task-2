@@ -1,0 +1,20 @@
+mixin MainCard()
+  .main_card(style=`background-image: url(${require('./assets/bg@2x.png')})`)
+    .main_card__info
+      h1(class="main_card__info__title") Привет, Геннадий!
+      span(class="main_card__info__status") Двери и окна закрыты, сигнализация включена.
+      .main_card__info__content
+        .main_card__info__content__item
+          .main_card__info__content__item__title Дома
+          .main_card__info__content__item__value 
+            span(class="main_card__info__content__item__temperature") +23
+        .main_card__info__content__item
+          .main_card__info__content__item__title Дома
+          .main_card__info__content__item__value 
+            span(class="main_card__info__content__item__temperature") +23
+            img(src=require("./assets/cloud-drizzle.svg") alt="cloud-icon" class="main_card__info__content__item__icon")
+    .main_card__devices
+      .main_card__devices__wrapper
+        each device in data.mainCardDevices
+          +card(device)
+      .scroll_btn

@@ -1,0 +1,87 @@
+clockSize = 221px
+clockBackground = #F7F7F7
+innerBorderColor = #181818
+
+.circle_controller
+  width: clockSize
+  height: clockSize
+  background: none
+  border-radius: 50%
+  overflow: hidden
+  
+  .inner
+    position: relative
+    width: 100%
+    height: 100%
+    background: #fff
+    border-radius: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    cursor pointer
+    padding: 10px
+    box-sizing: border-box
+    
+    .white
+      width: 0
+      height: 0
+      border-left: 55px solid transparent
+      border-right: 55px solid transparent
+      border-bottom: clockSize/2+10 solid #fff
+      position: absolute
+      z-index: 98
+      bottom: 0
+    .inner-circle
+      z-index: 99
+      width: 178px
+      height: 178px
+      background: #000
+      border-radius: 50%
+      background: #FEFEFE
+      box-shadow: 0 2px 4px 0 rgba(134,121,71,0.45)
+      display: flex
+      justify-content: center
+      align-items: center
+      .temperature
+        font-family: Arial
+        font-weight: bold
+        font-size: 66px
+    .graduations
+      .graduation
+        display: block
+        position: absolute
+        top: 0px
+        left: 50%
+        width: 1px
+        height: 22px
+        transform: rotate(0deg)
+        transform-origin: 0 (clockSize/2)px
+        for i in (1..145)
+          &:nth-child({i})
+            background #333333;
+            transform: rotate((2.5 * i + 180 - 2.5/2)deg)
+        for i in (1..14)
+          &:nth-child({i})
+            display: none
+        for i in (131..145)
+          &:nth-child({i})
+            display: none
+        &:before
+          display block
+          //content: ''
+          position absolute
+          top: 0
+          left -2px;
+          width: 5px
+          height 100%
+          background: transparent
+  .triangle-wrapper
+    position: absolute
+    width: 20px
+    //background: #000
+    z-index: 999
+    height: clockSize
+    //transform-origin: 0 (clockSize/2)px
+    transform: rotate(180deg)
+    bottom: 0
+    background: url('./assets/triangle.svg') center 190px no-repeat

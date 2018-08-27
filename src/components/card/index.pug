@@ -1,0 +1,19 @@
+
+- const temperatureIcon = require('./assets/icon_temperature.svg')
+- const temperatureIconActive = require('./assets/icon_temperature_2.svg')
+- const lightIcon = require('./assets/icon_sun.svg')
+- const lightIconActive = require('./assets/icon_sun_2.svg')
+- const timeIcon = require('./assets/icon_scheduled.svg')
+
+mixin card(item, small=false)
+  div(class= small ? 'card card--small' : 'card' data-popup-target= item.id)
+    case item.control
+      when 'light'
+        img(src= item.active ? lightIconActive : lightIcon class="card__icon")
+      when 'time'
+        img(src= timeIcon class="card__icon")
+      default
+        img(src= item.active ? temperatureIconActive : temperatureIcon class="card__icon")
+    .card__content
+      h2(class="card__title")= item.name
+      span(class="card__status")= item.status

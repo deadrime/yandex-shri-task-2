@@ -1,0 +1,4 @@
+mixin pageController(id, active)
+  .page_controller(id= id)
+    button.page_controller__arrow.page_controller__arrow--prev
+    button.page_controller__arrow.page_controller__arrow--next(class= active ? "page_controller__arrow--active" : null)
