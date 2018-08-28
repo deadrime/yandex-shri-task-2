@@ -1,5 +1,5 @@
 mixin modal({id, name, status, values})
-  div(class="popup__wrapper" data-popup-wrapper= id)
+  div(class="popup__wrapper" id=id data-popup-wrapper= id)
     div(class="popup")
       header(class="popup__header")
         i(class="popup__icon")
@@ -9,6 +9,7 @@ mixin modal({id, name, status, values})
       div(class="popup__content")
         if block
             block
-    button(class="btn btn--submit") Применить
-    button(class="btn btn--close") Закрыть
+    .popup__buttons
+      button(class="btn btn--submit") Применить
+      button(class="btn btn--close") Закрыть
     

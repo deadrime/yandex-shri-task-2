@@ -83,15 +83,12 @@ html, body
 .page_content
   display flex
   flex-wrap wrap
-  padding 0 0 0 20px
 
 .page_section
   display flex
   flex-direction column
   width 100%
   box-sizing border-box
-  &:nth-child(1)
-    padding-right 20px
   &__title
     font-size 18px
     margin 0 13px 0 0
@@ -125,17 +122,24 @@ html, body
     letter-spacing 0.01px
 
 .cards_list
-  display grid
-  grid-template-columns repeat(12, minmax(200px, 1fr))
+  &__wrapper
+    display: flex
+    overflow: hidden
+  .card
+    margin-right 15px
+  display flex
   padding 2px 0 5px 0
-  overflow hidden
-  grid-gap 15px
+  //overflow hidden
+  //grid-gap 15px
 
 .inline_cards
   overflow hidden
-  display grid
-  grid-template-columns repeat(12, minmax(200px, 1fr))
-  grid-gap 15px
+  display flex
+  .card
+    margin-right 15px
+    &:nth-child(1)
+      margin-left contentPadding
+  // grid-gap 15px
   padding 2px 0 5px 0
 
 @media (min-width: 1024px)
@@ -143,18 +147,31 @@ html, body
     width 50%
     &--fullsize
       width: 100%
-    &:nth-child(1)
+      .page_section__title
+        padding-left contentPadding
+      .page_section__header
+        padding-right contentPadding
+    &--left
       padding-right 14px
-    &:nth-child(2)
+      padding-left contentPadding
+    &--right
       padding-left: 14px
+      padding-right contentPadding
   .cards_list
+    .card
+      margin-right 0
+    min-width 100%
+    display grid
     grid-template-columns repeat(2, minmax(200px, 1fr))
-    padding 0
+    grid-template-rows repeat(3, 100px)
+    grid-gap 15px
+    padding-right 15px
+    &:nth-last-child(1)
+      padding 0
     overflow visible
-    .card:nth-child(n+7)
-      display none
-  .page_content
-    padding 0 contentPadding
+    
+  // .page_content
+  //   padding 0 contentPadding
   .page_footer
     padding 0 contentPadding
   .page_header
@@ -175,8 +192,7 @@ html, body
 @media (min-width: 1366px)
   .cards_list
     grid-template-columns repeat(3, minmax(200px, 1fr))
-    .card:nth-child(n+7)
-      display flex
+    grid-template-rows repeat(3, minmax(100px, 1fr))
 
 @media (min-width: 1800px)
   .cards_list

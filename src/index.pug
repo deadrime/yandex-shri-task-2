@@ -19,17 +19,17 @@ include components/tag/index
     +burgerMenu
 
   main(class="page_content")
-    section(class="page_section")
+    section(class="page_section page_section--left")
       header(class="page_section__header")
         h2(class="page_section__title") Главное
       div(class="page_section__content")
         +MainCard
 
-    section(class="page_section")
+    section(class="page_section page_section--right")
       header(class="page_section__header")
         h2(class="page_section__title") Избранные сценарии
         +pageController('cards_list__controller')
-      div(class="cards_list")
+      div(class="cards_list__wrapper")
         each script in data.scripts
           +card(script, 'small')
 
@@ -48,7 +48,6 @@ include components/tag/index
         a(href= item.href class="page_footer__nav__item")= item.title
     span.page_footer__copyright © 2001–2017  ООО «Яндекс»
 
-
 each item in [...data.scripts, ...data.mainCardDevices, ...data.favDevices]
   +modal(item)
     if (item.control === 'temperature')
@@ -57,4 +56,3 @@ each item in [...data.scripts, ...data.mainCardDevices, ...data.favDevices]
       +ovalController({type:'light', position: 'horizontal'})
     if (item.control === 'temperature_circle') 
       +circleController
-

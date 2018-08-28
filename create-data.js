@@ -186,7 +186,84 @@ const data = {
       control: 'temperature',
       status: '',
       active: true
-    }
+    },
+    {
+      id: shortId.generate(),
+      name: 'Включить свет в коридоре',
+      control: 'light',
+      status: '',
+      active: true
+    },
+    {
+      id: shortId.generate(),
+      name: 'Набрать горячую ванну',
+      control: 'temperature',
+      status: 'Начнётся в 18:00',
+      active: true
+    },
+    {
+      id: shortId.generate(),
+      name: 'Сделать пол тёплым во всей квартире',
+      control: 'temperature',
+      status: '',
+      active: true
+    },
+    {
+      id: shortId.generate(),
+      name: 'Сделать пол тёплым во всей квартире',
+      control: 'temperature',
+      status: '',
+      active: true
+    },
+    {
+      id: shortId.generate(),
+      name: 'Включить свет в коридоре',
+      control: 'light',
+      status: '',
+      active: true
+    },
+    {
+      id: shortId.generate(),
+      name: 'Набрать горячую ванну',
+      control: 'temperature',
+      status: 'Начнётся в 18:00',
+      active: true
+    },
+    {
+      id: shortId.generate(),
+      name: 'Сделать пол тёплым во всей квартире',
+      control: 'temperature',
+      status: '',
+      active: true
+    },
+    {
+      id: shortId.generate(),
+      name: 'Сделать пол тёплым во всей квартире',
+      control: 'temperature',
+      status: '',
+      active: true
+    },
+    {
+      id: shortId.generate(),
+      name: 'Включить свет в коридоре',
+      control: 'light',
+      status: '',
+      active: true
+    },
+    {
+      id: shortId.generate(),
+      name: 'Набрать горячую ванну',
+      control: 'temperature',
+      status: 'Начнётся в 18:00',
+      active: true
+    },
+    {
+      id: shortId.generate(),
+      name: 'Сделать пол тёплым во всей квартире',
+      control: 'temperature',
+      status: '',
+      active: true
+    },
   ],
   'footerNav': [
     {

@@ -2,7 +2,6 @@ import css from "./style.styl"
 import './components/burgerMenu/index'
 import OvalController from './components/ovalController/index'
 import './scrolls'
-import './cardsInlineArrowControl'
 import CircleController from "./components/circleController"
 import data from './data.json'
 
