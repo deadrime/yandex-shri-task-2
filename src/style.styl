@@ -94,10 +94,13 @@ html, body
     margin 0 13px 0 0
   &--fullsize
     width 100%
+  &--left
+    padding 0 contentPaddingMobile
   &__header
     display flex
     align-items center
     margin 30px 0 20px
+    padding 0 contentPaddingMobile
   
 .page_footer
   width 100%
@@ -125,10 +128,12 @@ html, body
   &__wrapper
     display: flex
     overflow: hidden
-  .card
-    margin-right 15px
+    padding 2px 0 5px 0 
+    .card
+      margin-right 15px
+      &:nth-child(1)
+        margin-left contentPaddingMobile
   display flex
-  padding 2px 0 5px 0
   //overflow hidden
   //grid-gap 15px
 
@@ -138,11 +143,13 @@ html, body
   .card
     margin-right 15px
     &:nth-child(1)
-      margin-left contentPadding
+      margin-left contentPaddingMobile
   // grid-gap 15px
   padding 2px 0 5px 0
 
 @media (min-width: 1024px)
+  .inline_cards .card:nth-child(1)
+    margin-left contentPadding
   .page_section
     width 50%
     &--fullsize
@@ -160,6 +167,8 @@ html, body
   .cards_list
     .card
       margin-right 0
+      &:nth-child(1)
+        margin-left 0
     min-width 100%
     display grid
     grid-template-columns repeat(2, minmax(200px, 1fr))
