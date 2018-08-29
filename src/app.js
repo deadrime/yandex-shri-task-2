@@ -21,15 +21,18 @@ for (let i = 0; i< popupTargers.length; i++) {
     const {x,y,width,height} = this.getBoundingClientRect()
     const popup = document.createElement('div');
     popup.className = 'popup'
-    popup.style.top = y + window.pageYOffset
-    popup.style.left = x + window.pageXOffset
-    popup.style.width = width
-    popup.style.height = height
-    popup.style.position = 'fixed'
-    popup.style.background = '#f7f7f7'
+    Object.assign(popup.style, {
+      top: y + window.pageYOffset,
+      left: x + window.pageXOffset,
+      width: width,
+      height: height,
+      position: 'fixed',
+      background: '#f7f7f7',
+    })
+
     document.body.appendChild(popup)
     document.body.classList.toggle('blur')
-
+  
     let popupWrapperForThis
     switch (item.control) {
       case 'light':
@@ -45,9 +48,6 @@ for (let i = 0; i< popupTargers.length; i++) {
         popupWrapperForThis = defaultPopup
         break
     }
-
-    console.log(item.control)
-    console.log(popupWrapperForThis)
 
     popupWrapperForThis.style.opacity = '0'
     popupWrapperForThis.style.display = 'flex'
@@ -74,6 +74,9 @@ for (let i = 0; i< popupTargers.length; i++) {
       } else if (currentInfo.control === 'light' || currentInfo.control === 'temperature') {
         new OvalController({ orientation: 'horizontal', parent: popupWrapperForThis })
       }
+      setTimeout(() => {
+        popup.style.visibility = 'hidden'
+      }, 400)
     }, 100)
 
     const closeBtn = popupWrapperForThis.querySelector('.btn--close')
@@ -83,8 +86,9 @@ for (let i = 0; i< popupTargers.length; i++) {
       popupWrapperForThis.style.opacity = '0'
 
       Object.assign(popup.style, {
-        top: x,
-        left: y,
+        visibility: 'visible',
+        top: y,
+        left: x,
         width,
         height,
         position: 'fixed',
