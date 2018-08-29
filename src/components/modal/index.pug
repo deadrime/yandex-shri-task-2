@@ -1,14 +1,14 @@
-mixin modal({id, name, status, values})
-  div(class="popup__wrapper" id=id data-popup-wrapper= id)
+mixin modal(item, id)
+  div(class="popup__wrapper" id=id)
     div(class="popup")
       header(class="popup__header")
         i(class="popup__icon")
           include ../../assets/icon_sun_2.svg
-        h1(class="popup__title")= name
-        span(class="popup__status")= status
+        h1(class="popup__title")
+        span(class="popup__status")
       div(class="popup__content")
         if block
-            block
+          block
     .popup__buttons
       button(class="btn btn--submit") Применить
       button(class="btn btn--close") Закрыть

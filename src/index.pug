@@ -48,11 +48,10 @@ include components/tag/index
         a(href= item.href class="page_footer__nav__item")= item.title
     span.page_footer__copyright © 2001–2017  ООО «Яндекс»
 
-each item in [...data.scripts, ...data.mainCardDevices, ...data.favDevices]
-  +modal(item)
-    if (item.control === 'temperature')
-      +ovalController({type:'temperature', position: 'horizontal'})
-    if (item.control === 'light') 
-      +ovalController({type:'light', position: 'horizontal'})
-    if (item.control === 'temperature_circle') 
-      +circleController
++modal(item, 'temperature_popup')
+  +ovalController({type:'temperature', position: 'horizontal'})
++modal(item, 'light_pupup')
+  +ovalController({type:'light', position: 'horizontal'})
++modal(item, 'temperature_circle_popup')
+  +circleController
++modal(item, 'default_popup')

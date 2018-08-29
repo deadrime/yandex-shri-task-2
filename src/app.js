@@ -5,16 +5,20 @@ import './scrolls'
 import CircleController from "./components/circleController"
 import data from './data.json'
 
-const popups = document.querySelectorAll('[data-popup-wrapper]')
+const temperaturePopup = document.querySelector('#temperature_popup')
+const lightPopup = document.querySelector('#light_pupup')
+const temperatureCirclePopup = document.querySelector('#temperature_circle_popup')
+const defaultPopup = document.querySelector('#default_popup')
 const popupTargers = document.querySelectorAll('[data-popup-target]')
-const pageWrapper = document.querySelector('.page_wrapper')
-
 const allData = [...data.scripts, ...data.mainCardDevices, ...data.favDevices]
 
 for (let i = 0; i< popupTargers.length; i++) {
-  const item = popupTargers[i]
-  item.addEventListener('click', e => {
-    const {x,y,width,height} = item.getBoundingClientRect()
+  popupTargers[i].addEventListener('click', function(e) {
+    const id = this.dataset.popupTarget
+    const item = allData.find(i => i.id === id)
+    if (!item) return
+
+    const {x,y,width,height} = this.getBoundingClientRect()
     const popup = document.createElement('div');
     popup.className = 'popup'
     popup.style.top = y + window.pageYOffset
@@ -25,22 +29,39 @@ for (let i = 0; i< popupTargers.length; i++) {
     popup.style.background = '#f7f7f7'
     document.body.appendChild(popup)
     document.body.classList.toggle('blur')
-    
-    const id = item.dataset.popupTarget
-    
-    const popupWrapperForThis = [...popups].find(i => i.dataset.popupWrapper === id)
+
+    let popupWrapperForThis
+    switch (item.control) {
+      case 'light':
+        popupWrapperForThis = lightPopup
+        break;
+      case 'temperature':
+        popupWrapperForThis = temperaturePopup
+        break
+      case 'temperature_circle':
+        popupWrapperForThis = temperatureCirclePopup
+        break
+      default:
+        popupWrapperForThis = defaultPopup
+        break
+    }
+
+    console.log(item.control)
+    console.log(popupWrapperForThis)
+
     popupWrapperForThis.style.opacity = '0'
     popupWrapperForThis.style.display = 'flex'
     popupWrapperForThis.style.transition = 'none'
     const popupForThis = popupWrapperForThis.querySelector('.popup')
 
     const newSizes = popupForThis.getBoundingClientRect()
-
-    popup.style.top = newSizes.y
-    popup.style.left = newSizes.x
-    popup.style.width = newSizes.width
-    popup.style.height = newSizes.height
-    popup.style.background = '#fff'
+    Object.assign(popup.style, {
+      top: newSizes.y,
+      left: newSizes.x,
+      width: newSizes.width,
+      height: newSizes.height,
+      background: '#fff',
+    })
     popupWrapperForThis.style.opacity = '1'
     popupWrapperForThis.style.transform = 'scale(0)'
     const currentInfo = allData.find(i => i.id === id)
@@ -60,17 +81,24 @@ for (let i = 0; i< popupTargers.length; i++) {
     const handleClose = e => {
       document.body.classList.toggle('blur')
       popupWrapperForThis.style.opacity = '0'
-      popup.style.top = y
-      popup.style.left = x
-      popup.style.width = width
-      popup.style.height = height
-      popup.style.position = 'fixed'
-      popup.style.background = '#f7f7f7'
+
+      Object.assign(popup.style, {
+        top: x,
+        left: y,
+        width,
+        height,
+        position: 'fixed',
+        background: '#f7f7f7'
+      })
+
       setTimeout(() => {
-        popup.remove()
+        popup.style.opacity = '0'
         popupWrapperForThis.style.transform = null
         popupWrapperForThis.style.display = 'none'
         closeBtn.removeEventListener('click', handleClose)
+        setTimeout(() => {
+          popup.remove()
+        }, 400)
       }, 400)
     }
     closeBtn.addEventListener('click', handleClose)
