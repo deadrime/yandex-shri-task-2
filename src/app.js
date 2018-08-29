@@ -53,7 +53,9 @@ for (let i = 0; i< popupTargers.length; i++) {
     popupWrapperForThis.style.display = 'flex'
     popupWrapperForThis.style.transition = 'none'
     const popupForThis = popupWrapperForThis.querySelector('.popup')
-
+    popupForThis.querySelector('.popup__title').innerHTML = item.name
+    popupForThis.querySelector('.popup__status').innerHTML = item.status
+    
     const newSizes = popupForThis.getBoundingClientRect()
     Object.assign(popup.style, {
       top: newSizes.y,
